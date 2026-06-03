@@ -1,0 +1,62 @@
+CREATE TABLE "Hospital" (
+    "IdHospital" INT PRIMARY KEY,
+    "Name" VARCHAR(100),
+    "Address" VARCHAR(200)
+);
+
+CREATE TABLE "Department" (
+    "IdDepartment" INT PRIMARY KEY,
+    "Name" VARCHAR(100),
+    "Capacity" INT
+);
+
+-- Kreiramo je ranije jer Patient i PatientPaper ovise o njoj
+CREATE TABLE "HospitalDepartment" (
+    "IdHospitalDepartment" INT PRIMARY KEY,
+    "IdHospital" INT,
+    "IdDepartment" INT,
+    CONSTRAINT "FkHospitalDepartment" FOREIGN KEY ("IdHospital") REFERENCES "Hospital"("IdHospital") ON DELETE CASCADE,
+    CONSTRAINT "FkDepartmentHospital" FOREIGN KEY ("IdDepartment") REFERENCES "Department"("IdDepartment") ON DELETE CASCADE
+);
+
+CREATE TABLE "Medic" (
+    "IdMedic" INT PRIMARY KEY,
+    "FirstName" VARCHAR(100),
+    "LastName" VARCHAR(100),
+    "Qualification" VARCHAR(100),
+    "IdDepartment" INT
+);
+
+CREATE TABLE "MedicDepartment" (
+    "IdMedic" INT,
+    "IdDepartment" INT,
+    CONSTRAINT "FkMedicDepartmentMedic" FOREIGN KEY ("IdMedic") REFERENCES "Medic"("IdMedic") ON DELETE CASCADE,
+    CONSTRAINT "FkMedicDepartmentDepartment" FOREIGN KEY ("IdDepartment") REFERENCES "Department"("IdDepartment") ON DELETE CASCADE
+);
+
+CREATE TABLE "Patient" (
+    "IdPatient" INT PRIMARY KEY,
+    "FirstName" VARCHAR(100),
+    "LastName" VARCHAR(100),
+    "IdHospitalDepartment" INT,
+    CONSTRAINT "FkPatientHospitalDepartment" FOREIGN KEY ("IdHospitalDepartment") REFERENCES "HospitalDepartment"("IdHospitalDepartment") ON DELETE CASCADE
+);
+
+CREATE TABLE "Cause" (
+    "IdCause" INT PRIMARY KEY,
+    "Type" VARCHAR(100),
+    "Description" TEXT,
+    "Name" VARCHAR(100)
+);
+
+CREATE TABLE "PatientPaper" (
+    "IdPatient" INT,
+    "IdCause" INT,
+    "IdMedic" INT,
+    "IdHospitalDepartment" INT,
+    "CameAt" DATE,
+    CONSTRAINT "FkHospitalDepartmentPaper" FOREIGN KEY ("IdHospitalDepartment") REFERENCES "HospitalDepartment"("IdHospitalDepartment") ON DELETE CASCADE,
+    CONSTRAINT "FkPatientPaper" FOREIGN KEY ("IdPatient") REFERENCES "Patient"("IdPatient") ON DELETE CASCADE,
+    CONSTRAINT "FkCausePaper" FOREIGN KEY ("IdCause") REFERENCES "Cause"("IdCause") ON DELETE CASCADE,
+    CONSTRAINT "FkMedicPaper" FOREIGN KEY ("IdMedic") REFERENCES "Medic"("IdMedic") ON DELETE CASCADE
+);

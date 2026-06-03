@@ -1,0 +1,14 @@
+create table "Medic" (
+	"IdMedic" int primary key,
+	"Name" varchar,
+	"IsActive" boolean
+);
+
+create table "Patient"(
+	"IdPatient" int primary key,
+	"Name" varchar,
+	"DiseaseType" varchar, 
+	"Sex" varchar,
+	"IdMedic" int,
+	CONSTRAINT "FkMedic" FOREIGN KEY ("IdMedic") REFERENCES "Medic"("IdMedic") ON DELETE CASCADE
+);

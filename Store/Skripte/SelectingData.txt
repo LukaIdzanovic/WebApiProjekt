@@ -1,0 +1,17 @@
+SELECT * FROM "Patient";
+
+SELECT "FirstName", "LastName" FROM "Patient";
+
+select count("IdDepartment") from "HospitalDepartment";
+
+select "IdPatient" from "PatientPaper" where "CameAt" > '2026-04-20';
+
+select * from "PatientPaper" order by "CameAt" desc;
+
+select "Patient"."FirstName", "Patient"."LastName", "Cause"."Description" from "PatientPaper" inner join "Patient" on "PatientPaper"."IdPatient" = "Patient"."IdPatient" inner join "Cause" on "PatientPaper"."IdCause" = "Cause"."IdCause" where "Cause"."Type"='Upala';
+
+select "Medic"."FirstName", "Medic"."LastName", "PatientPaper"."IdPatient" from "Medic" inner join "PatientPaper" on "Medic"."IdMedic"="PatientPaper"."IdPatient" where "CameAt" > '2026-04-20';
+
+select "Patient"."FirstName", "Patient"."LastName", "PatientPaper"."CameAt" from "Patient" left join "PatientPaper" on "Patient"."IdPatient" = "PatientPaper"."IdPatient";
+
+select "Cause"."Name", "PatientPaper"."IdPatient" from "PatientPaper" right join "Cause" on "PatientPaper"."IdCause" = "Cause"."IdCause";

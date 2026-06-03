@@ -39,17 +39,17 @@ namespace Store.Controllers
         {
             if(patients.Find(x => x.Id == id) == null)
             {
-                return NotFound();
+                return NotFound("Nema tog pacijenta");
             }
             return Ok(patients.Find(x => x.Id == id));
         }
 
-        [HttpPut("Swap/{id}", Name = "GetPatientById")]
+        [HttpPut("Swap/{id}", Name = "SwapPatient")]
         public IActionResult SwapPatient(int id, Patient goalPatient)
         {
             if (patients.Find(x => x.Id == id) == null)
             {
-                return NotFound();
+                return NotFound("Nema tog pacijenta");
             }
             Patient patient = patients.Find(x => x.Id == id);
             patient.Name = goalPatient.Name;
@@ -75,7 +75,7 @@ namespace Store.Controllers
             }
             else
             {
-                return NotFound();
+                return NotFound("Nema tog pacijenta");
             }
         }
     }
