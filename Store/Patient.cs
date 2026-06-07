@@ -2,9 +2,10 @@
 {
     public class Patient
     {
-        public int Id { get;  set; }
+        public int IdPatient { get;  set; }
         public string Name {get;  set;}
         public string DiseaseType { get; set; }
         public string Sex { get; set; }
+        public int IdMedic { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Npgsql;
 
 namespace Store.Controllers
 {
@@ -9,41 +10,84 @@ namespace Store.Controllers
         public static List<Patient> patients;
         public static Medic medic;
 
+        private const string connectionString = "Host = localhost;" +
+                                                "Username = postgres;" +
+                                                "Password = 5432;" +
+                                                "Port = 5432;" +
+                                                "Database = DataBaseFromModel";
+
         static MedicController()
         {
             patients = PatientsData.patients;
-            medic = new Medic(33, "Kunić");
         }
 
-        [HttpGet("GetMedic", Name = "GetMedic")]
-        public IActionResult GetMedic()
+        [HttpGet("{id}", Name = "GetMedic")]
+        public IActionResult GetMedicById(int id)
         {
-            if (medic == null)
+            try
             {
-                return NotFound("nema doktora...");
+                Medic medic = new Medic();
+                string commandText = "SELECT * FROM \"Medic\" WHERE \"MedicId\" = @IdMedic";
+                using NpgsqlConnection connection = new NpgsqlConnection(connectionString);
+                using NpgsqlCommand command = new NpgsqlCommand(commandText, connection);
+                command.Parameters.AddWithValue("IdMedic", id);
+                connection.Open();
+                NpgsqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    medic.Id = Convert.ToInt32(reader[0]);
+                    medic.Name = reader[1].ToString();
+                    medic.IsActive = Convert.ToBoolean(reader[2]);
+                }
+                connection.Close();
+                return Ok(medic);
             }
-            return Ok(medic);
+            catch(Exception ex) 
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        [HttpPost("RestMedic", Name = "RestMedic")]
-        public IActionResult RestMedic()
+        [HttpPost("RestMedic/", Name = "RestMedic")]
+        public IActionResult RestMedic(int id)
         {
-            if (medic.IsActive == false)
+            try
             {
-                return BadRequest("Već je na odmoru");
+                string commandText = "UPDATE \"Medic\" SET \"IsActive\" = false WHERE \"MedicId\" = @IdMedic";
+                using NpgsqlConnection connection = new NpgsqlConnection(connectionString);
+                using NpgsqlCommand command = new NpgsqlCommand(commandText, connection);
+
+                command.Parameters.AddWithValue("IdMedic", id);
+                connection.Open();
+                int number = command.ExecuteNonQuery();
+                connection.Close();
+                return Ok(number);
             }
-            medic.IsActive = false;
-            return Ok(medic);
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        [HttpPost("HealPatient/{id}", Name = "HealPatient")]
-        public IActionResult HealPatient(int id)
+        [HttpPost("HealPatient", Name = "HealPatient")]
+        public IActionResult HealPatient(int PatientId)
         {
-            if (patients.Find(x => x.Id ==id).DiseaseType == null)
+            try
             {
-                return BadRequest("Već je zdrav");
+                string commandText = "UPDATE \"Patient\" SET \"DiseaseType\" = NULL FROM \"Patient\" p INNER JOIN \"Medic\" m ON p.\"IdMedic\" = m.\"MedicId\" WHERE \"Patient\".\"IdPatient\" = p.\"IdPatient\" AND p.\"IdPatient\" = @PatientId AND m.\"IsActive\" = true";
+                using NpgsqlConnection connection = new NpgsqlConnection(connectionString);
+                using NpgsqlCommand command = new NpgsqlCommand(commandText, connection);
+
+                command.Parameters.AddWithValue("@PatientId", PatientId);
+                connection.Open();
+                int number = command.ExecuteNonQuery();
+                connection.Close();
+                return Ok(number);
             }
-            return Ok(medic.Heal(id, patients));
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

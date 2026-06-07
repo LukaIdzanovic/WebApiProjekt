@@ -1,20 +1,9 @@
 [
   {
     "ContainingType": "Store.Controllers.MedicController",
-    "Method": "GetMedic",
-    "RelativePath": "Medic/GetMedic",
+    "Method": "GetMedicById",
+    "RelativePath": "Medic/{id}",
     "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [],
-    "EndpointName": "GetMedic"
-  },
-  {
-    "ContainingType": "Store.Controllers.MedicController",
-    "Method": "HealPatient",
-    "RelativePath": "Medic/HealPatient/{id}",
-    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -22,6 +11,23 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [],
+    "EndpointName": "GetMedic"
+  },
+  {
+    "ContainingType": "Store.Controllers.MedicController",
+    "Method": "HealPatient",
+    "RelativePath": "Medic/HealPatient",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PatientId",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [],
@@ -34,7 +40,13 @@
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": [],
     "EndpointName": "RestMedic"
   },
@@ -91,7 +103,7 @@
         "IsRequired": false
       },
       {
-        "Name": "type",
+        "Name": "diseaseType",
         "Type": "System.String",
         "IsRequired": false
       }
@@ -125,13 +137,13 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
-        "Type": "System.Int32",
+        "Name": "goalPatient",
+        "Type": "Store.Patient",
         "IsRequired": true
       },
       {
-        "Name": "goalPatient",
-        "Type": "Store.Patient",
+        "Name": "id",
+        "Type": "",
         "IsRequired": true
       }
     ],

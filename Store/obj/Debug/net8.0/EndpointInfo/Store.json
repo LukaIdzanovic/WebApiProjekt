@@ -5,12 +5,23 @@
     "version": "1.0"
   },
   "paths": {
-    "/Medic/GetMedic": {
+    "/Medic/{id}": {
       "get": {
         "tags": [
           "Medic"
         ],
         "operationId": "GetMedic",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -24,6 +35,16 @@
           "Medic"
         ],
         "operationId": "RestMedic",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -31,7 +52,7 @@
         }
       }
     },
-    "/Medic/HealPatient/{id}": {
+    "/Medic/HealPatient": {
       "post": {
         "tags": [
           "Medic"
@@ -39,9 +60,8 @@
         "operationId": "HealPatient",
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "required": true,
+            "name": "PatientId",
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -77,7 +97,7 @@
             }
           },
           {
-            "name": "type",
+            "name": "diseaseType",
             "in": "query",
             "schema": {
               "type": "string"
@@ -127,8 +147,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],
@@ -259,7 +278,7 @@
       "Patient": {
         "type": "object",
         "properties": {
-          "id": {
+          "idPatient": {
             "type": "integer",
             "format": "int32"
           },
@@ -274,6 +293,10 @@
           "sex": {
             "type": "string",
             "nullable": true
+          },
+          "idMedic": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
