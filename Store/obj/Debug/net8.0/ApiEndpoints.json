@@ -18,9 +18,26 @@
   },
   {
     "ContainingType": "Store.Controllers.MedicController",
+    "Method": "AddMedic",
+    "RelativePath": "Medic/AddMedic",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "medic",
+        "Type": "Store.Models.Medic",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [],
+    "EndpointName": "AddMedic"
+  },
+  {
+    "ContainingType": "Store.Controllers.MedicController",
     "Method": "HealPatient",
     "RelativePath": "Medic/HealPatient",
-    "HttpMethod": "POST",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -36,19 +53,36 @@
   {
     "ContainingType": "Store.Controllers.MedicController",
     "Method": "RestMedic",
-    "RelativePath": "Medic/RestMedic",
-    "HttpMethod": "POST",
+    "RelativePath": "Medic/RestMedic/{id}",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [],
     "EndpointName": "RestMedic"
+  },
+  {
+    "ContainingType": "Store.Controllers.MedicController",
+    "Method": "RetrunFromVacation",
+    "RelativePath": "Medic/ReturnFromVacation/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [],
+    "EndpointName": "ReturnFromVacation"
   },
   {
     "ContainingType": "Store.Controllers.PatientController",
@@ -77,7 +111,7 @@
     "Parameters": [
       {
         "Name": "patient",
-        "Type": "Store.Patient",
+        "Type": "Store.Models.Patient",
         "IsRequired": true
       }
     ],
@@ -93,19 +127,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "name",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "sex",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "diseaseType",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "filter",
+        "Type": "Common.PatientFilter",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [],
@@ -138,7 +162,7 @@
     "Parameters": [
       {
         "Name": "goalPatient",
-        "Type": "Store.Patient",
+        "Type": "Store.Models.Patient",
         "IsRequired": true
       },
       {
@@ -160,7 +184,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Store.WeatherForecast, Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Store.WeatherForecast, Store.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

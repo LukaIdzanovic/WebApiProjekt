@@ -163,6 +163,89 @@
         "build": {
           "buildTransitive/net8.0/_._": {}
         }
+      },
+      "Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Common.dll": {}
+        }
+      },
+      "Store.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Store.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Store.Models.dll": {}
+        }
+      },
+      "Store.Repository/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Common": "1.0.0",
+          "Npgsql": "10.0.3",
+          "Store.Models": "1.0.0",
+          "Store.Repository.Common": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Store.Repository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Store.Repository.dll": {}
+        }
+      },
+      "Store.Repository.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Common": "1.0.0",
+          "Npgsql": "10.0.3",
+          "Store.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Store.Repository.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Store.Repository.Common.dll": {}
+        }
+      },
+      "Store.Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Common": "1.0.0",
+          "Npgsql": "10.0.3",
+          "Store.Models": "1.0.0",
+          "Store.Repository": "1.0.0",
+          "Store.Service.Common": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Store.Service.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Store.Service.dll": {}
+        }
+      },
+      "Store.Service.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Common": "1.0.0",
+          "Npgsql": "10.0.3",
+          "Store.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Store.Service.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Store.Service.Common.dll": {}
+        }
       }
     }
   },
@@ -745,12 +828,45 @@
         "system.diagnostics.diagnosticsource.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "Common/1.0.0": {
+      "type": "project",
+      "path": "../Common/Common.csproj",
+      "msbuildProject": "../Common/Common.csproj"
+    },
+    "Store.Models/1.0.0": {
+      "type": "project",
+      "path": "../Store.Models/Store.Models.csproj",
+      "msbuildProject": "../Store.Models/Store.Models.csproj"
+    },
+    "Store.Repository/1.0.0": {
+      "type": "project",
+      "path": "../Patient.Repository/Store.Repository.csproj",
+      "msbuildProject": "../Patient.Repository/Store.Repository.csproj"
+    },
+    "Store.Repository.Common/1.0.0": {
+      "type": "project",
+      "path": "../Patient.Repository.Common/Store.Repository.Common.csproj",
+      "msbuildProject": "../Patient.Repository.Common/Store.Repository.Common.csproj"
+    },
+    "Store.Service/1.0.0": {
+      "type": "project",
+      "path": "../Patient.Service/Store.Service.csproj",
+      "msbuildProject": "../Patient.Service/Store.Service.csproj"
+    },
+    "Store.Service.Common/1.0.0": {
+      "type": "project",
+      "path": "../PatientService.common/Store.Service.Common.csproj",
+      "msbuildProject": "../PatientService.common/Store.Service.Common.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Common >= 1.0.0",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.22.1",
       "Npgsql >= 10.0.3",
+      "Store.Models >= 1.0.0",
+      "Store.Service >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.6.2"
     ]
   },
@@ -761,9 +877,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Store\\Store.csproj",
-      "projectName": "Store",
-      "projectPath": "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Store\\Store.csproj",
+      "projectUniqueName": "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Store\\Store.WebApi.csproj",
+      "projectName": "Store.WebApi",
+      "projectPath": "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Store\\Store.WebApi.csproj",
       "packagesPath": "C:\\Users\\Luka\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Store\\obj\\",
       "projectStyle": "PackageReference",
@@ -785,7 +901,17 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Common\\Common.csproj": {
+              "projectPath": "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Common\\Common.csproj"
+            },
+            "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Patient.Service\\Store.Service.csproj": {
+              "projectPath": "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Patient.Service\\Store.Service.csproj"
+            },
+            "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Store.Models\\Store.Models.csproj": {
+              "projectPath": "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Store.Models\\Store.Models.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

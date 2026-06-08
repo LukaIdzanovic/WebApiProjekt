@@ -1,0 +1,12 @@
+C:\Users\Luka\source\repos\Store.WebApi\Store.Models\bin\Debug\net8.0\Store.Models.deps.json
+C:\Users\Luka\source\repos\Store.WebApi\Store.Models\bin\Debug\net8.0\Store.Models.dll
+C:\Users\Luka\source\repos\Store.WebApi\Store.Models\bin\Debug\net8.0\Store.Models.pdb
+C:\Users\Luka\source\repos\Store.WebApi\Store.Models\obj\Debug\net8.0\Store.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Luka\source\repos\Store.WebApi\Store.Models\obj\Debug\net8.0\Store.Models.AssemblyInfoInputs.cache
+C:\Users\Luka\source\repos\Store.WebApi\Store.Models\obj\Debug\net8.0\Store.Models.AssemblyInfo.cs
+C:\Users\Luka\source\repos\Store.WebApi\Store.Models\obj\Debug\net8.0\Store.Models.csproj.CoreCompileInputs.cache
+C:\Users\Luka\source\repos\Store.WebApi\Store.Models\obj\Debug\net8.0\Store.Models.sourcelink.json
+C:\Users\Luka\source\repos\Store.WebApi\Store.Models\obj\Debug\net8.0\Store.Models.dll
+C:\Users\Luka\source\repos\Store.WebApi\Store.Models\obj\Debug\net8.0\refint\Store.Models.dll
+C:\Users\Luka\source\repos\Store.WebApi\Store.Models\obj\Debug\net8.0\Store.Models.pdb
+C:\Users\Luka\source\repos\Store.WebApi\Store.Models\obj\Debug\net8.0\ref\Store.Models.dll

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "neHKYsBugAI=",
+  "dgSpecHash": "4LxiJTQRcmA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Store\\Store.csproj",
+  "projectFilePath": "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Store\\Store.WebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Luka\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\Luka\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",

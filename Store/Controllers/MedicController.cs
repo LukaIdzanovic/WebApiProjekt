@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Npgsql;
+using Store.Models;
+using Store.Service;
 
 namespace Store.Controllers
 {
@@ -16,10 +18,7 @@ namespace Store.Controllers
                                                 "Port = 5432;" +
                                                 "Database = DataBaseFromModel";
 
-        static MedicController()
-        {
-            patients = PatientsData.patients;
-        }
+        MedicService service = new MedicService();
 
         [HttpGet("{id}", Name = "GetMedic")]
         public IActionResult GetMedicById(int id)
@@ -27,19 +26,7 @@ namespace Store.Controllers
             try
             {
                 Medic medic = new Medic();
-                string commandText = "SELECT * FROM \"Medic\" WHERE \"MedicId\" = @IdMedic";
-                using NpgsqlConnection connection = new NpgsqlConnection(connectionString);
-                using NpgsqlCommand command = new NpgsqlCommand(commandText, connection);
-                command.Parameters.AddWithValue("IdMedic", id);
-                connection.Open();
-                NpgsqlDataReader reader = command.ExecuteReader();
-                if (reader.Read())
-                {
-                    medic.Id = Convert.ToInt32(reader[0]);
-                    medic.Name = reader[1].ToString();
-                    medic.IsActive = Convert.ToBoolean(reader[2]);
-                }
-                connection.Close();
+                medic = service.GetMedicById(id);
                 return Ok(medic);
             }
             catch(Exception ex) 
@@ -48,20 +35,12 @@ namespace Store.Controllers
             }
         }
 
-        [HttpPost("RestMedic/", Name = "RestMedic")]
+        [HttpPut("RestMedic/{id}", Name = "RestMedic")]
         public IActionResult RestMedic(int id)
         {
             try
             {
-                string commandText = "UPDATE \"Medic\" SET \"IsActive\" = false WHERE \"MedicId\" = @IdMedic";
-                using NpgsqlConnection connection = new NpgsqlConnection(connectionString);
-                using NpgsqlCommand command = new NpgsqlCommand(commandText, connection);
-
-                command.Parameters.AddWithValue("IdMedic", id);
-                connection.Open();
-                int number = command.ExecuteNonQuery();
-                connection.Close();
-                return Ok(number);
+                return Ok(service.RestMedic(id));
             }
             catch(Exception ex)
             {
@@ -69,20 +48,42 @@ namespace Store.Controllers
             }
         }
 
-        [HttpPost("HealPatient", Name = "HealPatient")]
+        [HttpPut("HealPatient", Name = "HealPatient")]
         public IActionResult HealPatient(int PatientId)
         {
             try
             {
-                string commandText = "UPDATE \"Patient\" SET \"DiseaseType\" = NULL FROM \"Patient\" p INNER JOIN \"Medic\" m ON p.\"IdMedic\" = m.\"MedicId\" WHERE \"Patient\".\"IdPatient\" = p.\"IdPatient\" AND p.\"IdPatient\" = @PatientId AND m.\"IsActive\" = true";
-                using NpgsqlConnection connection = new NpgsqlConnection(connectionString);
-                using NpgsqlCommand command = new NpgsqlCommand(commandText, connection);
-
-                command.Parameters.AddWithValue("@PatientId", PatientId);
-                connection.Open();
-                int number = command.ExecuteNonQuery();
-                connection.Close();
+                int number = 0;
+                number = service.HealPatient(PatientId);
                 return Ok(number);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+
+            }
+        }
+        [HttpPost("AddMedic", Name = "AddMedic")]
+        public IActionResult AddMedic(Medic medic)
+        {
+            try
+            {
+                int number = 0;
+                number = service.AddMedic(medic);
+                return Ok(number);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("ReturnFromVacation/{id}", Name = "ReturnFromVacation")]
+        public IActionResult RetrunFromVacation(int id)
+        {
+            try
+            {
+                return Ok(service.ReturnFromVacation(id));
             }
             catch (Exception ex)
             {
