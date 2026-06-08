@@ -17,11 +17,11 @@ namespace Store.Repository
                                                 "Password = 5432;" +
                                                 "Port = 5432;" +
                                                 "Database = DataBaseFromModel";
-        public int AddPatient(Patient patient)
+        public async Task<int> AddPatientAsync(Patient patient)
         {
-            using NpgsqlConnection connection = new NpgsqlConnection(connectionString);
+            await using NpgsqlConnection connection = new NpgsqlConnection(connectionString);
             string commandText = "INSERT INTO \"Patient\" (\"IdPatient\", \"Name\", \"DiseaseType\", \"Sex\", \"IdMedic\") VALUES (@IdPatient, @Name, @DiseaseType, @Sex, @IdMedic)";
-            using NpgsqlCommand command = new NpgsqlCommand(commandText, connection);
+            await using NpgsqlCommand command = new NpgsqlCommand(commandText, connection);
 
             command.Parameters.AddWithValue("IdPatient", patient.IdPatient);
             command.Parameters.AddWithValue("Name", patient.Name);
@@ -30,32 +30,32 @@ namespace Store.Repository
             command.Parameters.AddWithValue("IdMedic", patient.IdMedic);
 
             connection.Open();
-            int number = command.ExecuteNonQuery();
+            int number = await command.ExecuteNonQueryAsync();
             connection.Close();
 
             return number;
         }
 
-        public int DeletePatient(int id)
+        public async Task<int> DeletePatientAsync(int id)
         {
-            using NpgsqlConnection connection = new NpgsqlConnection(connectionString);
+            await using NpgsqlConnection connection = new NpgsqlConnection(connectionString);
             string commandText = "DELETE FROM \"Patient\" WHERE \"IdPatient\" = @IdPatient";
-            using NpgsqlCommand command = new NpgsqlCommand(commandText, connection);
+            await using NpgsqlCommand command = new NpgsqlCommand(commandText, connection);
 
             command.Parameters.AddWithValue("IdPatient", id);
 
             connection.Open();
-            int number = command.ExecuteNonQuery();
+            int number = await command.ExecuteNonQueryAsync();
             connection.Close();
 
             return number;
         }
 
-        public int SwapPatient(Patient goalPatient)
+        public async Task<int> SwapPatientAsync(Patient goalPatient)
         {
-            using NpgsqlConnection connection = new NpgsqlConnection(connectionString);
+            await using NpgsqlConnection connection = new NpgsqlConnection(connectionString);
             string commandText = "UPDATE \"Patient\" SET \"Name\" = @Name, \"DiseaseType\" = @DiseaseType, \"Sex\" = @Sex, \"IdMedic\"=@IdMedic WHERE  \"IdPatient\" = @IdPatient";
-            using NpgsqlCommand command = new NpgsqlCommand(commandText, connection);
+            await using NpgsqlCommand command = new NpgsqlCommand(commandText, connection);
 
             command.Parameters.AddWithValue("IdPatient", goalPatient.IdPatient);
             command.Parameters.AddWithValue("Name", goalPatient.Name);
@@ -64,25 +64,25 @@ namespace Store.Repository
             command.Parameters.AddWithValue("IdMedic", goalPatient.IdMedic);
 
             connection.Open();
-            int number = command.ExecuteNonQuery();
+            int number = await command.ExecuteNonQueryAsync();
             connection.Close();
 
             return number;
         }
 
-        public Patient GetPatientById(int id)
+        public async Task<Patient> GetPatientByIdAsync(int id)
         {
 
-            using NpgsqlConnection connection = new NpgsqlConnection(connectionString);
+            await using NpgsqlConnection connection = new NpgsqlConnection(connectionString);
             string commandText = "SELECT * FROM \"Patient\" WHERE \"IdPatient\" = @IdPatient";
-            using NpgsqlCommand command = new NpgsqlCommand(commandText, connection);
+            await using NpgsqlCommand command = new NpgsqlCommand(commandText, connection);
 
             command.Parameters.AddWithValue("IdPatient", id);
 
             Patient patient = new Patient();
             connection.Open();
-            NpgsqlDataReader reader = command.ExecuteReader();
-            if (reader.Read())
+            NpgsqlDataReader reader = await command.ExecuteReaderAsync();
+            if (await reader.ReadAsync())
             {
                 patient.IdPatient = Convert.ToInt32(reader[0]);
                 patient.Name = Convert.ToString(reader[1]);
@@ -96,11 +96,11 @@ namespace Store.Repository
 
         }
 
-        public List<Patient> GetAll(PatientFilter filter)
+        public async Task<List<Patient>> GetAllAsync(PatientFilter filter)
         {
             List<Patient> patients = new List<Patient>();
 
-            using NpgsqlConnection connection = new NpgsqlConnection(connectionString);
+            await using NpgsqlConnection connection = new NpgsqlConnection(connectionString);
             string commandText = "SELECT * FROM \"Patient\" WHERE 1=1";
             if (!string.IsNullOrEmpty(filter.Name))
                 commandText += " AND \"Name\" = @Name";
@@ -109,7 +109,7 @@ namespace Store.Repository
             else if (!string.IsNullOrEmpty(filter.DiseaseType))
                 commandText += " AND \"DiseaseType\" = @DiseaseType";
 
-            using NpgsqlCommand command = new NpgsqlCommand(commandText, connection);
+            await using NpgsqlCommand command = new NpgsqlCommand(commandText, connection);
             if (!string.IsNullOrEmpty(filter.Name))
             {
                 command.Parameters.AddWithValue("Name", filter.Name);
@@ -124,8 +124,8 @@ namespace Store.Repository
             }
 
             connection.Open();
-            using NpgsqlDataReader reader = command.ExecuteReader();
-            while (reader.Read())
+            await using NpgsqlDataReader reader = command.ExecuteReader();
+            while (await reader.ReadAsync())
             {
                 Patient patient = new Patient();
                 patient.IdPatient = Convert.ToInt32(reader[0]);

@@ -23,12 +23,12 @@ namespace Store.Controllers
                                                 "Database = DataBaseFromModel";
 
         [HttpGet("All", Name = "GetAllPatients")]
-        public IActionResult GetAllPatients(PatientFilter filter)
+        public async Task<IActionResult> GetAllPatientsAsync(PatientFilter filter)
         {
             try
             {
                 List<Patient> patients = new List<Patient>();
-                patients = service.GetAll(filter);
+                patients = await service.GetAllAsync(filter);
                 return Ok(patients);
             }
             catch (Exception ex)
@@ -39,11 +39,11 @@ namespace Store.Controllers
 
 
         [HttpGet("{id}", Name = "GetPatientById")]
-        public IActionResult GetPatientById(int id)
+        public async Task<IActionResult> GetPatientByIdAsync(int id)
         {
             try
             {
-                Patient patient = service.GetPatientById(id);
+                Patient patient = await service.GetPatientByIdAsync(id);
                 return Ok(patient);
             }
             catch(Exception ex)
@@ -53,12 +53,12 @@ namespace Store.Controllers
         }
 
         [HttpPut("Swap/{id}", Name = "SwapPatient")]
-        public IActionResult SwapPatient(Patient goalPatient)
+        public async Task<IActionResult> SwapPatientAsync(Patient goalPatient)
         {
             try
             {
                 int number = 0;
-                number = service.SwapPatient(goalPatient);
+                number = await service.SwapPatientAsync(goalPatient);
                 return Ok(number);
             }
             catch (Exception ex)
@@ -68,12 +68,12 @@ namespace Store.Controllers
         }
 
         [HttpPost("AddPatient", Name = "AddPatient")]
-        public IActionResult AddPatient(Patient patient)
+        public async Task<IActionResult> AddPatientAsync(Patient patient)
         {
             try
             {
                 int number = 0;
-                number = service.AddPatient(patient);
+                number = await service.AddPatientAsync(patient);
                 return Ok(number);
             }
             catch(Exception ex)
@@ -83,11 +83,11 @@ namespace Store.Controllers
         }
 
         [HttpDelete("DeletePatient/{id}", Name = "DeletePatient")]
-        public IActionResult DeletePatient(int id)
+        public async Task<IActionResult> DeletePatientAsync(int id)
         {
             try
             {
-                int number = service.DeletePatient(id);
+                int number = await service.DeletePatientAsync(id);
                 return Ok(number);
             }
             catch(Exception ex )

@@ -1,11 +1,12 @@
 ﻿using Store.Models;
 using Store.Repository;
+using Store.Service.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Store.Service.Common;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Store.Service
 {
@@ -13,32 +14,38 @@ namespace Store.Service
     {
         MedicRepository repository = new MedicRepository();
 
-        public Medic GetMedicById(int id)
+        public async Task<Medic> GetMedicByIdAsync(int id)
         {
             Medic medic = new Medic();
-            medic = repository.GetMedicById(id);
+            medic = await repository.GetMedicByIdAsync(id);
             return medic;
         }
 
-        public int RestMedic(int id)
+        public async Task<int> RestMedicAsync(int id)
         {
-            return repository.RestMedic(id);
-        }
-
-        public int HealPatient(int id)
-        {
-            return repository.HealPatient(id);
-        }
-
-        public int AddMedic(Medic medic)
-        {
-            int number = repository.AddMedic(medic);
+            int number = 0;
+            number = await repository.RestMedicAsync(id);
             return number;
         }
 
-        public int ReturnFromVacation(int id)
+        public async Task<int> HealPatientAsync(int id)
         {
-            int number = repository.ReturnFromVacation(id);
+            int number = 0;
+            number = await repository.HealPatientAsync(id);
+            return number;
+        }
+
+        public async Task<int> AddMedicAsync(Medic medic)
+        {
+            int number = 0;
+            number = await repository.AddMedicAsync(medic);
+            return number;
+        }
+
+        public async Task<int> ReturnFromVacationAsync(int id)
+        {
+            int number = 0;
+            number = await repository.ReturnFromVacationAsync(id);
             return number;
         }
     }

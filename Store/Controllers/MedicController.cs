@@ -21,12 +21,12 @@ namespace Store.Controllers
         MedicService service = new MedicService();
 
         [HttpGet("{id}", Name = "GetMedic")]
-        public IActionResult GetMedicById(int id)
+        public async Task<IActionResult> GetMedicByIdAsync(int id)
         {
             try
             {
                 Medic medic = new Medic();
-                medic = service.GetMedicById(id);
+                medic = await service.GetMedicByIdAsync(id);
                 return Ok(medic);
             }
             catch(Exception ex) 
@@ -36,11 +36,13 @@ namespace Store.Controllers
         }
 
         [HttpPut("RestMedic/{id}", Name = "RestMedic")]
-        public IActionResult RestMedic(int id)
+        public async Task<IActionResult> RestMedicAsync(int id)
         {
             try
             {
-                return Ok(service.RestMedic(id));
+                int number = 0;
+                number = await service.RestMedicAsync(id);
+                return Ok(number);
             }
             catch(Exception ex)
             {
@@ -49,12 +51,12 @@ namespace Store.Controllers
         }
 
         [HttpPut("HealPatient", Name = "HealPatient")]
-        public IActionResult HealPatient(int PatientId)
+        public async Task<IActionResult> HealPatientAsync(int PatientId)
         {
             try
             {
                 int number = 0;
-                number = service.HealPatient(PatientId);
+                number = await service.HealPatientAsync(PatientId);
                 return Ok(number);
             }
             catch (Exception ex)
@@ -64,12 +66,12 @@ namespace Store.Controllers
             }
         }
         [HttpPost("AddMedic", Name = "AddMedic")]
-        public IActionResult AddMedic(Medic medic)
+        public async Task<IActionResult> AddMedicAsync(Medic medic)
         {
             try
             {
                 int number = 0;
-                number = service.AddMedic(medic);
+                number = await service.AddMedicAsync(medic);
                 return Ok(number);
             }
             catch (Exception ex)
@@ -79,11 +81,13 @@ namespace Store.Controllers
         }
 
         [HttpPut("ReturnFromVacation/{id}", Name = "ReturnFromVacation")]
-        public IActionResult RetrunFromVacation(int id)
+        public async Task<IActionResult> RetrunFromVacationAsync(int id)
         {
             try
             {
-                return Ok(service.ReturnFromVacation(id));
+                int number = 0;
+                number = await service.ReturnFromVacationAsync(id);
+                return Ok(number);
             }
             catch (Exception ex)
             {

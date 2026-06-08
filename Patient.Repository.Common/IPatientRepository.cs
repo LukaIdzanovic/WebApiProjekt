@@ -10,10 +10,10 @@ namespace Store.Repository.Common
 {
     public interface IPatientRepository
     {
-        public int AddPatient(Patient addPatient);
-        public int DeletePatient(int id);
-        public int SwapPatient(Patient patient);
-        public Patient GetPatientById(int id);
-        public List<Patient> GetAll(PatientFilter filter);
+        public Task<int> AddPatientAsync(Patient addPatient);
+        public Task<int> DeletePatientAsync(int id);
+        public Task<int> SwapPatientAsync(Patient patient);
+        public Task<Patient> GetPatientByIdAsync(int id);
+        public Task<List<Patient>> GetAllAsync(PatientFilter filter);
     }
 }

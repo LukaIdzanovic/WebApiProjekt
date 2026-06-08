@@ -1,7 +1,7 @@
 [
   {
     "ContainingType": "Store.Controllers.MedicController",
-    "Method": "GetMedicById",
+    "Method": "GetMedicByIdAsync",
     "RelativePath": "Medic/{id}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -18,7 +18,7 @@
   },
   {
     "ContainingType": "Store.Controllers.MedicController",
-    "Method": "AddMedic",
+    "Method": "AddMedicAsync",
     "RelativePath": "Medic/AddMedic",
     "HttpMethod": "POST",
     "IsController": true,
@@ -35,7 +35,7 @@
   },
   {
     "ContainingType": "Store.Controllers.MedicController",
-    "Method": "HealPatient",
+    "Method": "HealPatientAsync",
     "RelativePath": "Medic/HealPatient",
     "HttpMethod": "PUT",
     "IsController": true,
@@ -52,7 +52,7 @@
   },
   {
     "ContainingType": "Store.Controllers.MedicController",
-    "Method": "RestMedic",
+    "Method": "RestMedicAsync",
     "RelativePath": "Medic/RestMedic/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
@@ -69,7 +69,7 @@
   },
   {
     "ContainingType": "Store.Controllers.MedicController",
-    "Method": "RetrunFromVacation",
+    "Method": "RetrunFromVacationAsync",
     "RelativePath": "Medic/ReturnFromVacation/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
@@ -86,7 +86,7 @@
   },
   {
     "ContainingType": "Store.Controllers.PatientController",
-    "Method": "GetPatientById",
+    "Method": "GetPatientByIdAsync",
     "RelativePath": "Patient/{id}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -103,7 +103,7 @@
   },
   {
     "ContainingType": "Store.Controllers.PatientController",
-    "Method": "AddPatient",
+    "Method": "AddPatientAsync",
     "RelativePath": "Patient/AddPatient",
     "HttpMethod": "POST",
     "IsController": true,
@@ -120,7 +120,7 @@
   },
   {
     "ContainingType": "Store.Controllers.PatientController",
-    "Method": "GetAllPatients",
+    "Method": "GetAllPatientsAsync",
     "RelativePath": "Patient/All",
     "HttpMethod": "GET",
     "IsController": true,
@@ -137,7 +137,7 @@
   },
   {
     "ContainingType": "Store.Controllers.PatientController",
-    "Method": "DeletePatient",
+    "Method": "DeletePatientAsync",
     "RelativePath": "Patient/DeletePatient/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
@@ -154,7 +154,7 @@
   },
   {
     "ContainingType": "Store.Controllers.PatientController",
-    "Method": "SwapPatient",
+    "Method": "SwapPatientAsync",
     "RelativePath": "Patient/Swap/{id}",
     "HttpMethod": "PUT",
     "IsController": true,

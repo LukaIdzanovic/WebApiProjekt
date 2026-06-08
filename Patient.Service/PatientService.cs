@@ -9,42 +9,42 @@ namespace Store.Service
     {
         PatientRepository repository = new PatientRepository();
             
-        public int AddPatient(Patient addPatient)
+        public async Task<int> AddPatientAsync(Patient addPatient)
         {
             Patient patient = new Patient();
             patient = addPatient;
             int number = 0;
-            if (addPatient != null) { number = repository.AddPatient(patient); }
+            if (addPatient != null) { number = await repository.AddPatientAsync(patient); }
             return number;
         }
 
-        public int DeletePatient(int id)
+        public async Task<int> DeletePatientAsync(int id)
         {
             int number = 0;
-            number = repository.DeletePatient(id);
+            number = await repository.DeletePatientAsync(id);
             return number;
         }
 
-        public int SwapPatient(Patient patient)
+        public async Task<int> SwapPatientAsync(Patient patient)
         {
             int number = 0;
             if (patient != null)
             {
-                number = repository.SwapPatient(patient);
+                number = await repository.SwapPatientAsync(patient);
             }
             return number;
         }
-        public Patient GetPatientById(int id)
+        public async Task<Patient> GetPatientByIdAsync(int id)
         {
             Patient patient = new Patient();
-            patient = repository.GetPatientById(id);
+            patient = await repository.GetPatientByIdAsync(id);
             return patient;
         }
 
-        public List<Patient> GetAll(PatientFilter filter)
+        public async Task<List<Patient>> GetAllAsync(PatientFilter filter)
         {
             List<Patient> patients = new List<Patient>();
-            patients = repository.GetAll(filter);
+            patients = await repository.GetAllAsync(filter);
             return patients;
         }
     }

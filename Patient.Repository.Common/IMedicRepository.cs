@@ -9,10 +9,10 @@ namespace Store.Repository.Common
 {
     public interface IMedicRepository
     {
-        public int ReturnFromVacation(int id);
-        public int AddMedic(Medic medic);
-        public int HealPatient(int id);
-        public int RestMedic(int id);
-        public Medic GetMedicById(int id);
+        public Task<int> ReturnFromVacationAsync(int id);
+        public Task<int> AddMedicAsync(Medic medic);
+        public Task<int> HealPatientAsync(int id);
+        public Task<int> RestMedicAsync(int id);
+        public Task<Medic> GetMedicByIdAsync(int id);
     }
 }
