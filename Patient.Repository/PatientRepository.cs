@@ -2,11 +2,7 @@
 using Npgsql;
 using Store.Models;
 using Store.Repository.Common;
-using Store.Repository.Common;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using AutoMapper;
 
 namespace Store.Repository
 {

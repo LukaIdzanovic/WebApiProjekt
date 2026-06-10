@@ -7,12 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Npgsql" Version="10.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj" />
-    <ProjectReference Include="..\Patient.Repository\Store.Repository.csproj" />
+    <ProjectReference Include="..\Patient.Repository.Common\Store.Repository.Common.csproj" />
     <ProjectReference Include="..\PatientService.common\Store.Service.Common.csproj" />
     <ProjectReference Include="..\Store.Models\Store.Models.csproj" />
   </ItemGroup>

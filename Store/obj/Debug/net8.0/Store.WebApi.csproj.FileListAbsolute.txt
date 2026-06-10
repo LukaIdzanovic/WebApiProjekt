@@ -48,3 +48,8 @@ C:\Users\Luka\source\repos\Store.WebApi\Store\bin\Debug\net8.0\Store.Service.Com
 C:\Users\Luka\source\repos\Store.WebApi\Store\bin\Debug\net8.0\Common.pdb
 C:\Users\Luka\source\repos\Store.WebApi\Store\bin\Debug\net8.0\Store.Repository.Common.pdb
 C:\Users\Luka\source\repos\Store.WebApi\Store\bin\Debug\net8.0\Store.Service.Common.pdb
+C:\Users\Luka\source\repos\Store.WebApi\Store\bin\Debug\net8.0\Autofac.dll
+C:\Users\Luka\source\repos\Store.WebApi\Store\bin\Debug\net8.0\Autofac.Extensions.DependencyInjection.dll
+C:\Users\Luka\source\repos\Store.WebApi\Store\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Luka\source\repos\Store.WebApi\Store\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\Luka\source\repos\Store.WebApi\Store\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

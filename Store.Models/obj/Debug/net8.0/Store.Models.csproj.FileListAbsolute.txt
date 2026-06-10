@@ -10,3 +10,4 @@ C:\Users\Luka\source\repos\Store.WebApi\Store.Models\obj\Debug\net8.0\Store.Mode
 C:\Users\Luka\source\repos\Store.WebApi\Store.Models\obj\Debug\net8.0\refint\Store.Models.dll
 C:\Users\Luka\source\repos\Store.WebApi\Store.Models\obj\Debug\net8.0\Store.Models.pdb
 C:\Users\Luka\source\repos\Store.WebApi\Store.Models\obj\Debug\net8.0\ref\Store.Models.dll
+C:\Users\Luka\source\repos\Store.WebApi\Store.Models\obj\Debug\net8.0\Store.Models.csproj.AssemblyReference.cache

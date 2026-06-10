@@ -86,17 +86,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Medic"
+                "$ref": "#/components/schemas/MedicDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Medic"
+                "$ref": "#/components/schemas/MedicDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Medic"
+                "$ref": "#/components/schemas/MedicDto"
               }
             }
           }
@@ -208,17 +208,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Patient"
+                "$ref": "#/components/schemas/PatientDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Patient"
+                "$ref": "#/components/schemas/PatientDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Patient"
+                "$ref": "#/components/schemas/PatientDto"
               }
             }
           }
@@ -240,17 +240,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Patient"
+                "$ref": "#/components/schemas/PatientDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Patient"
+                "$ref": "#/components/schemas/PatientDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Patient"
+                "$ref": "#/components/schemas/PatientDto"
               }
             }
           }
@@ -328,7 +328,7 @@
   },
   "components": {
     "schemas": {
-      "Medic": {
+      "MedicDto": {
         "type": "object",
         "properties": {
           "id": {
@@ -345,7 +345,7 @@
         },
         "additionalProperties": false
       },
-      "Patient": {
+      "PatientDto": {
         "type": "object",
         "properties": {
           "idPatient": {

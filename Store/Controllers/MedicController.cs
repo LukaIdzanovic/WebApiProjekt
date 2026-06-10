@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Npgsql;
 using Store.Models;
 using Store.Service;
+using Store.Service.Common;
 
 namespace Store.Controllers
 {
@@ -9,25 +11,23 @@ namespace Store.Controllers
     [Route("[controller]")]
     public class MedicController : ControllerBase
     {
-        public static List<Patient> patients;
-        public static Medic medic;
+        private IMedicService Service { get; set; }
+        public IMapper Mapper { get; set; }
 
-        private const string connectionString = "Host = localhost;" +
-                                                "Username = postgres;" +
-                                                "Password = 5432;" +
-                                                "Port = 5432;" +
-                                                "Database = DataBaseFromModel";
-
-        MedicService service = new MedicService();
+        public MedicController (IMedicService service, IMapper mapper)
+        {
+            Service = service;
+            Mapper = mapper;
+        }
 
         [HttpGet("{id}", Name = "GetMedic")]
         public async Task<IActionResult> GetMedicByIdAsync(int id)
         {
             try
             {
-                Medic medic = new Medic();
-                medic = await service.GetMedicByIdAsync(id);
-                return Ok(medic);
+                Medic medic = await Service.GetMedicByIdAsync(id);
+                MedicDto medicDto = Mapper.Map<MedicDto>(medic);
+                return Ok(medicDto);
             }
             catch(Exception ex) 
             {
@@ -41,7 +41,7 @@ namespace Store.Controllers
             try
             {
                 int number = 0;
-                number = await service.RestMedicAsync(id);
+                number = await Service.RestMedicAsync(id);
                 return Ok(number);
             }
             catch(Exception ex)
@@ -56,22 +56,22 @@ namespace Store.Controllers
             try
             {
                 int number = 0;
-                number = await service.HealPatientAsync(PatientId);
+                number = await Service.HealPatientAsync(PatientId);
                 return Ok(number);
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
-
             }
         }
         [HttpPost("AddMedic", Name = "AddMedic")]
-        public async Task<IActionResult> AddMedicAsync(Medic medic)
+        public async Task<IActionResult> AddMedicAsync(MedicDto medicDto)
         {
             try
             {
                 int number = 0;
-                number = await service.AddMedicAsync(medic);
+                Medic medic = Mapper.Map<Medic>(medicDto);
+                number = await Service.AddMedicAsync(medic);
                 return Ok(number);
             }
             catch (Exception ex)
@@ -86,7 +86,7 @@ namespace Store.Controllers
             try
             {
                 int number = 0;
-                number = await service.ReturnFromVacationAsync(id);
+                number = await Service.ReturnFromVacationAsync(id);
                 return Ok(number);
             }
             catch (Exception ex)

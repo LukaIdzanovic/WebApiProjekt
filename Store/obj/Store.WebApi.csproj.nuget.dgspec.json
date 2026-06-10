@@ -203,6 +203,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "Npgsql": {
               "target": "Package",
               "version": "[10.0.3, )"
@@ -259,8 +263,8 @@
               "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Common\\Common.csproj": {
                 "projectPath": "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Common\\Common.csproj"
               },
-              "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Patient.Repository\\Store.Repository.csproj": {
-                "projectPath": "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Patient.Repository\\Store.Repository.csproj"
+              "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Patient.Repository.Common\\Store.Repository.Common.csproj": {
+                "projectPath": "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Patient.Repository.Common\\Store.Repository.Common.csproj"
               },
               "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\PatientService.common\\Store.Service.Common.csproj": {
                 "projectPath": "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\PatientService.common\\Store.Service.Common.csproj"
@@ -287,6 +291,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "Npgsql": {
               "target": "Package",
               "version": "[10.0.3, )"
@@ -435,6 +443,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -486,8 +500,17 @@
               "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Common\\Common.csproj": {
                 "projectPath": "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Common\\Common.csproj"
               },
+              "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Patient.Repository.Common\\Store.Repository.Common.csproj": {
+                "projectPath": "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Patient.Repository.Common\\Store.Repository.Common.csproj"
+              },
+              "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Patient.Repository\\Store.Repository.csproj": {
+                "projectPath": "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Patient.Repository\\Store.Repository.csproj"
+              },
               "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Patient.Service\\Store.Service.csproj": {
                 "projectPath": "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Patient.Service\\Store.Service.csproj"
+              },
+              "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\PatientService.common\\Store.Service.Common.csproj": {
+                "projectPath": "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\PatientService.common\\Store.Service.Common.csproj"
               },
               "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Store.Models\\Store.Models.csproj": {
                 "projectPath": "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Store.Models\\Store.Models.csproj"
@@ -511,6 +534,18 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "Autofac": {
+              "target": "Package",
+              "version": "[9.1.0, )"
+            },
+            "Autofac.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.0.0, )"
+            },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
               "version": "[1.22.1, )"

@@ -25,8 +25,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "medic",
-        "Type": "Store.Models.Medic",
+        "Name": "medicDto",
+        "Type": "Store.Models.MedicDto",
         "IsRequired": true
       }
     ],
@@ -110,8 +110,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "patient",
-        "Type": "Store.Models.Patient",
+        "Name": "patientDto",
+        "Type": "Store.Models.PatientDto",
         "IsRequired": true
       }
     ],
@@ -161,8 +161,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "goalPatient",
-        "Type": "Store.Models.Patient",
+        "Name": "goalPatientDto",
+        "Type": "Store.Models.PatientDto",
         "IsRequired": true
       },
       {

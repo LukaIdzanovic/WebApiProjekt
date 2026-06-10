@@ -1,0 +1,92 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{47442618-4FE8-4C77-849E-05138F040E55}|Store\\Store.WebApi.csproj|c:\\users\\luka\\source\\repos\\store.webapi\\store\\controllers\\mediccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47442618-4FE8-4C77-849E-05138F040E55}|Store\\Store.WebApi.csproj|solutionrelative:store\\controllers\\mediccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3925C584-5155-4B7B-A94A-C64174F2E272}|Patient.Repository\\Store.Repository.csproj|c:\\users\\luka\\source\\repos\\store.webapi\\patient.repository\\medicrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3925C584-5155-4B7B-A94A-C64174F2E272}|Patient.Repository\\Store.Repository.csproj|solutionrelative:patient.repository\\medicrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47442618-4FE8-4C77-849E-05138F040E55}|Store\\Store.WebApi.csproj|c:\\users\\luka\\source\\repos\\store.webapi\\store\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47442618-4FE8-4C77-849E-05138F040E55}|Store\\Store.WebApi.csproj|solutionrelative:store\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95F48E1E-402D-4230-8032-3C4F74C69145}|Store.Models\\Store.Models.csproj|c:\\users\\luka\\source\\repos\\store.webapi\\store.models\\medic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95F48E1E-402D-4230-8032-3C4F74C69145}|Store.Models\\Store.Models.csproj|solutionrelative:store.models\\medic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MedicController.cs",
+              "DocumentMoniker": "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Store\\Controllers\\MedicController.cs",
+              "RelativeDocumentMoniker": "Store\\Controllers\\MedicController.cs",
+              "ToolTip": "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Store\\Controllers\\MedicController.cs*",
+              "RelativeToolTip": "Store\\Controllers\\MedicController.cs*",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAowD8AAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-09T18:16:29.377Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Medic.cs",
+              "DocumentMoniker": "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Store.Models\\Medic.cs",
+              "RelativeDocumentMoniker": "Store.Models\\Medic.cs",
+              "ToolTip": "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Store.Models\\Medic.cs",
+              "RelativeToolTip": "Store.Models\\Medic.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-09T17:32:38.326Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MedicRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Patient.Repository\\MedicRepository.cs",
+              "RelativeDocumentMoniker": "Patient.Repository\\MedicRepository.cs",
+              "ToolTip": "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Patient.Repository\\MedicRepository.cs",
+              "RelativeToolTip": "Patient.Repository\\MedicRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-09T17:32:01.452Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Store\\Program.cs",
+              "RelativeDocumentMoniker": "Store\\Program.cs",
+              "ToolTip": "C:\\Users\\Luka\\source\\repos\\Store.WebApi\\Store\\Program.cs",
+              "RelativeToolTip": "Store\\Program.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAmwCwAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-09T08:33:54.078Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

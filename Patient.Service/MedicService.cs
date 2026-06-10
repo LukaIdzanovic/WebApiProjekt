@@ -7,45 +7,50 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using Store.Repository.Common;
 
 namespace Store.Service
 {
     public class MedicService : IMedicService
     {
-        MedicRepository repository = new MedicRepository();
+        private IMedicRepository Repository { get; set; }
 
+        public MedicService(IMedicRepository repository)
+        {
+            Repository = repository;
+        }
         public async Task<Medic> GetMedicByIdAsync(int id)
         {
             Medic medic = new Medic();
-            medic = await repository.GetMedicByIdAsync(id);
+            medic = await Repository.GetMedicByIdAsync(id);
             return medic;
         }
 
         public async Task<int> RestMedicAsync(int id)
         {
             int number = 0;
-            number = await repository.RestMedicAsync(id);
+            number = await Repository.RestMedicAsync(id);
             return number;
         }
 
         public async Task<int> HealPatientAsync(int id)
         {
             int number = 0;
-            number = await repository.HealPatientAsync(id);
+            number = await Repository.HealPatientAsync(id);
             return number;
         }
 
         public async Task<int> AddMedicAsync(Medic medic)
         {
             int number = 0;
-            number = await repository.AddMedicAsync(medic);
+            number = await Repository.AddMedicAsync(medic);
             return number;
         }
 
         public async Task<int> ReturnFromVacationAsync(int id)
         {
             int number = 0;
-            number = await repository.ReturnFromVacationAsync(id);
+            number = await Repository.ReturnFromVacationAsync(id);
             return number;
         }
     }

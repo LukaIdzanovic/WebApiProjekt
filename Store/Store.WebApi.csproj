@@ -9,6 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+	<PackageReference Include="Autofac.Extensions.DependencyInjection" Version="11.0.0" />
+	<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="Autofac" Version="9.1.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.22.1" />
     <PackageReference Include="Npgsql" Version="10.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
@@ -20,8 +23,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj" />
+    <ProjectReference Include="..\Patient.Repository.Common\Store.Repository.Common.csproj" />
+    <ProjectReference Include="..\Patient.Repository\Store.Repository.csproj" />
     <ProjectReference Include="..\Patient.Service\Store.Service.csproj" />
+    <ProjectReference Include="..\PatientService.common\Store.Service.Common.csproj" />
     <ProjectReference Include="..\Store.Models\Store.Models.csproj" />
+	  
   </ItemGroup>
 
 </Project>

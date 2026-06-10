@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Npgsql;
-using Store.Models;
-using Store.Repository;
-using Store.Service;
-using System.Security.Cryptography.X509Certificates;
-using System.Xml.Linq;
+﻿using AutoMapper;
 using Common;
+using Microsoft.AspNetCore.Mvc;
+using Store.Models;
+using Store.Service.Common;
+
 
 namespace Store.Controllers
 {
@@ -14,13 +12,14 @@ namespace Store.Controllers
     [Route("[controller]")]
     public class PatientController : ControllerBase
     {
-        public static List<Patient> patients;
-        PatientService service = new PatientService();
-        private const string connectionString = "Host = localhost;" + 
-                                                "Username = postgres;" +
-                                                "Password = 5432;" +
-                                                "Port = 5432;" +
-                                                "Database = DataBaseFromModel";
+        private IPatientService Service { get; set; }
+        public IMapper Mapper { get; set; }
+
+        public PatientController(IPatientService service, IMapper mapper)
+        {
+            Service = service;
+            Mapper = mapper;
+        }
 
         [HttpGet("All", Name = "GetAllPatients")]
         public async Task<IActionResult> GetAllPatientsAsync(PatientFilter filter)
@@ -28,8 +27,13 @@ namespace Store.Controllers
             try
             {
                 List<Patient> patients = new List<Patient>();
-                patients = await service.GetAllAsync(filter);
-                return Ok(patients);
+                List<PatientDto> patientDtos = new List<PatientDto>();
+                patients = await Service.GetAllAsync(filter);
+                foreach (Patient p in patients) {
+                    PatientDto patientDto = Mapper.Map<PatientDto>(p);
+                    patientDtos.Add(patientDto);
+                }
+                return Ok(patientDtos);
             }
             catch (Exception ex)
             {
@@ -41,10 +45,12 @@ namespace Store.Controllers
         [HttpGet("{id}", Name = "GetPatientById")]
         public async Task<IActionResult> GetPatientByIdAsync(int id)
         {
+
             try
             {
-                Patient patient = await service.GetPatientByIdAsync(id);
-                return Ok(patient);
+                Patient patient = await Service.GetPatientByIdAsync(id);
+                PatientDto patientDto = Mapper.Map<PatientDto>(patient);
+                return Ok(patientDto);
             }
             catch(Exception ex)
             {
@@ -53,12 +59,13 @@ namespace Store.Controllers
         }
 
         [HttpPut("Swap/{id}", Name = "SwapPatient")]
-        public async Task<IActionResult> SwapPatientAsync(Patient goalPatient)
+        public async Task<IActionResult> SwapPatientAsync(PatientDto goalPatientDto)
         {
             try
             {
                 int number = 0;
-                number = await service.SwapPatientAsync(goalPatient);
+                Patient goalPatient = Mapper.Map<Patient>(goalPatientDto);
+                number = await Service.SwapPatientAsync(goalPatient);
                 return Ok(number);
             }
             catch (Exception ex)
@@ -68,12 +75,13 @@ namespace Store.Controllers
         }
 
         [HttpPost("AddPatient", Name = "AddPatient")]
-        public async Task<IActionResult> AddPatientAsync(Patient patient)
+        public async Task<IActionResult> AddPatientAsync(PatientDto patientDto)
         {
             try
             {
+                Patient patient = Mapper.Map<Patient>(patientDto);
                 int number = 0;
-                number = await service.AddPatientAsync(patient);
+                number = await Service.AddPatientAsync(patient);
                 return Ok(number);
             }
             catch(Exception ex)
@@ -87,7 +95,7 @@ namespace Store.Controllers
         {
             try
             {
-                int number = await service.DeletePatientAsync(id);
+                int number = await Service.DeletePatientAsync(id);
                 return Ok(number);
             }
             catch(Exception ex )
